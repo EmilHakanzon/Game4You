@@ -1,8 +1,8 @@
-import Image from "next/image";
+import CardHome from "@/ui/cardHome";
 
-export default function Home() {
+export default async function HomePage() {
+
   return (
-    <div>Home</div>
-   
+    <CardHome />
   );
 }
