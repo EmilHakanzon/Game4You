@@ -16,6 +16,10 @@ module.exports = {
         accent: "#3B82F6",
         accentHover: "#60A5FA",
       },
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"], // For body text
+        heading: ["Orbitron", "sans-serif"], // For headings
+      },
     },
   },
   plugins: [],
