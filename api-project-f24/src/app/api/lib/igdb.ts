@@ -6,15 +6,15 @@ export async function fetchGames() {
     },
     body: JSON.stringify({
       query: `
-        fields name, cover.url, summary, aggregated_rating, platforms;
+        fields name, cover.url, summary, aggregated_rating;
         sort aggregated_rating desc;
-        where platforms = (48) & aggregated_rating != null;
+        where rating > 93;
         limit 8;
       `,
     }),
     cache: "no-store",
   });
-
+// console.log(JSON);
   if (!res.ok) throw new Error("Failed to fetch games");
   return res.json();
 }
