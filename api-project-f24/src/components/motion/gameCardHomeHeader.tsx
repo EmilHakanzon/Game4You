@@ -8,7 +8,7 @@ export default function Header({ title }: { title: string }) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="text-2xl font-bold mb-6 pl-15 text-[#F1F5F9]"
+      className="text-2xl mb-6 pl-15 text-[#F1F5F9]"
     >
       {title}
     </motion.h1>

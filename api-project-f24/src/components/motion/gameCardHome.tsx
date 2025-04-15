@@ -25,9 +25,9 @@ export default function GameCardHome({game}: GameCardProps) {
       ) : (
         <div className="h-40 rounded mb-3 bg-gray-700" />
       )}
-      <h2 className="text-sm font-medium text-[#F1F5F9] text-center">
+      <p className="text-sm font-medium text-[#F1F5F9] text-center">
         {game.name}
-      </h2>
+      </p>
     </motion.div>
   );
 }

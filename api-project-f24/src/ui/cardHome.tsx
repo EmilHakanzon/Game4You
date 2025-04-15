@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchGames } from "@/app/api/lib/igdb";
+import { fetchGames } from "@/app/api/lib/igdbFetchHome";
 import type { Game } from "../../types/types";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utility/animationCardHome";
@@ -24,7 +24,7 @@ export default function CardHome() {
       
       if (isMounted) {
       const data = await fetchGames();
-      setGames(data);
+      setGames(data); // uppdatera state från apiet,fetch innehåller Game[]
       setIsLoading(false);
       setIsLoaded(true);
       // console.log("Setting isLoading to false");
@@ -41,7 +41,7 @@ export default function CardHome() {
     <main className="p-6 mt-20">
       <LoadingSpinner />
       {/* Rubrik  */}
-      <Header title="Top Games..." />
+      <Header title="Fan Favorites" />
       {/* Kort  */}
       <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"

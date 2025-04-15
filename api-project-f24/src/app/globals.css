@@ -1,6 +1,19 @@
+@import "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap";
 @import "tailwindcss";
+
 
 
 body {
   background-color: #0F172A;
+  font-family: 'Roboto', sans-serif;
+  color: #F1F5F9;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Orbitron', sans-serif;
 }
