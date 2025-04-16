@@ -16,7 +16,7 @@ export default function Navbar() {
       animate={{ opacity: 1 }}
       transition={{ delay: 2, duration: 0.75 }}
     >
-      <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed">
+      <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20">
         <div className="max-w-7xl mx-auto flex items-center justify-between space-x-4">
           {/* Logo */}
           <LogoNav />

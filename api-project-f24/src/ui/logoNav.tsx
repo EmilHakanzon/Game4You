@@ -1,14 +1,10 @@
-
-
 export const LogoNav = () => {
-
   return (
-    <img
-      src="/81eb0529-e79f-4ef4-aa52-b5992be36f31.jpg"
-      alt="Game4You"
-      className="w-15 h-15 rounded-full"
-    />
+    <div className="h-20">
+      <img src="/logo.png" alt="Game4You" className="w-35 h-35 -mt-8.5 " />
+      <p className="text-xl -mt-21.5 pl-3.5 font-bold">Game</p>
+    </div>
   );
-}
+};
 
-export default LogoNav
+export default LogoNav;
