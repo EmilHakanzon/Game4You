@@ -2,7 +2,7 @@
 
 import DropDown from "@/ui/dropdown";
 import LogoNav from "@/ui/logoNav";
-import SearchBar from "@/ui/searchbar";
+import { SearchBar } from "@/ui/searchbar";
 
 export default function Navbar() {
   return (
