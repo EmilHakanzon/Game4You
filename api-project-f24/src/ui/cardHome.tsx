@@ -1,7 +1,7 @@
 "use client";
 
 import { fetchGames } from "@/app/api/lib/igdbFetchHome";
-import type { Game } from "../../types/types";
+import type { Game } from "../types/types";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utility/animationCardHome";
 import { useEffect, useState } from "react";
@@ -21,20 +21,20 @@ export default function CardHome() {
       // console.log("Setting isLoading to true");
       setIsLoading(true); // start loading innan api call
       await new Promise((resolve) => setTimeout(resolve, 1000)); // skapa delay för lodingSpinner
-      
+
       if (isMounted) {
-      const data = await fetchGames();
-      setGames(data); // uppdatera state från apiet,fetch innehåller Game[]
-      setIsLoading(false);
-      setIsLoaded(true);
-      // console.log("Setting isLoading to false");
-    }
+        const data = await fetchGames();
+        setGames(data); // uppdatera state från apiet,fetch innehåller Game[]
+        setIsLoading(false);
+        setIsLoaded(true);
+        // console.log("Setting isLoading to false");
+      }
     }
     getGames();
 
     return () => {
       isMounted = false; // cleanup funktion
-    }
+    };
   }, [setIsLoaded, setIsLoading]);
 
   return (
