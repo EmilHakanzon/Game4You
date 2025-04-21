@@ -1,69 +1,82 @@
 "use client";
-
-import { Search } from "lucide-react";
+import { ChevronDown, Loader2 } from "lucide-react";
+import { useSearchStore } from "../store/searchState";
 import { useState } from "react";
-import { searchFromIGDB } from "@/app/api/lib/igdbSearh";
-import { SearchResults } from "@/ui/searchREsult";
+
+const dropdownOptions = ["Games", "Companies", "Studios"];
 
 export const SearchBar = () => {
-  const [search, setSearch] = useState("");
-  const [selected, setSelected] = useState<"Games" | "Companies" | "Studios">(
-    "Games",
-  );
-  const [results, setResults] = useState<any[]>([]);
+  const { input, setInput, handleSearch, clearSearch, setCategory, category } =
+    useSearchStore();
+  const [showFilter, setShowFilter] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const handleSearch = async () => {
-    if (!search) return;
+  const handleSelect = (value: "Games" | "Companies" | "Studios") => {
+    setCategory(value);
+    setShowFilter(false);
+  };
+
+  const handleSearchWithLoading = async () => {
+    if (!input.trim()) return;
+    setIsSearching(true);
     try {
-      const data = await searchFromIGDB(search, selected);
-      setResults(data);
-    } catch (err) {
-      console.error(err);
+      await handleSearch();
+    } catch (error) {
+      console.error("failed to search...", error);
+    } finally {
+      setIsSearching(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center w-full px-4">
-
-      {/* Sökfält */}
-      <div className="relative w-full max-w-xl flex items-center">
+    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 w-full relative pl-[250px]">
+      {/* Filter Dropdown */}
+      <div className="relative">
+        <button
+          onClick={() => setShowFilter((prev) => !prev)}
+          className="text-[#3B82F6] cursor-pointer hover:bg-[#1b2435] transition"
+        >
+          <ChevronDown size={16} />
+        </button>
+        {showFilter && (
+          <div className="absolute top-full left-0 mt-2 bg-purple-800 text-white rounded shadow-md z-10 min-w-[150px]">
+            {dropdownOptions.map((option) => (
+              <button
+                key={option}
+                onClick={() => handleSelect(option as any)}
+                className="block w-full text-left px-4 py-2 hover:bg-purple-600"
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* Input */}
+      <div className="flex flex-col w-full max-w-md">
         <input
           type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          placeholder={`Search for ${selected.toLowerCase()}...`}
-          className="w-full pl-4 pr-10 py-2 rounded-full bg-purple-600 text-[#F1F5F9] placeholder-[#F1F5F9] focus:outline-none"
-        />
-        <Search
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#F1F5F9] cursor-pointer"
-          size={18}
-          onClick={handleSearch}
-        />
-      </div>
-      {/* Checkbox-grupp */}
-      <div className="flex gap-4 my-4">
-        {["Games", "Companies", "Studios"].map((option) => (
-          <label key={option} className="text-white flex gap-2 items-center">
-            <input
-              type="radio"
-              name="category"
-              value={option}
-              checked={selected === option}
-              onChange={() => setSelected(option as any)}
-              className="accent-purple-500"
-            />
-            {option}
-          </label>
-        ))}
-      </div>
+          value={input}
+          onChange={(e) => {
+            const value = e.target.value;
+            setInput(value);
 
-      {/* Resultat */}
-      {results.length > 0 && (
-        <div className="w-full max-w-6xl">
-          <SearchResults results={results} category={selected} />
-        </div>
-      )}
+            if (value.trim() === "") {
+              clearSearch();
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchWithLoading();
+            }
+          }}
+          placeholder={`Search for ${category.toLowerCase()}...`} 
+          className="px-4 py-2 rounded bg-purple-600 text-white w-full"
+        />
+        {isSearching && (
+          <Loader2 className="w-5 h-5 text-blue-400 animate-spin absolute right-[230px] mt-2" />
+        )}
+      </div>
     </div>
   );
 };
