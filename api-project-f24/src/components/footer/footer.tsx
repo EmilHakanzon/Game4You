@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import useLoadingStore from "../../../store/LoadingDelay";
+import useLoadingStore from "../../store/LoadingDelay";
 
 export default function Footer() {
   return (
@@ -13,7 +13,8 @@ export default function Footer() {
             className="w-15 h-15 bg-purple-600 rounded-full"
           />
           <p className="text-[#F1F5F9] text-sm mt-4">
-            © {new Date().getFullYear()} Game4You. <br></br>All rights reserved.
+            © {new Date().getFullYear()} Game4You. <br></br>All rights
+            reserved.
           </p>
         </div>
 
