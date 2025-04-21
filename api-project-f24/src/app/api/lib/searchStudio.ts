@@ -1,10 +1,11 @@
-export async function searchFromIGDB(term: string, category: string) {
+export async function searchStudios(term: string) {
   const query = `
     search "${term}";
-    fields name, cover.url, summary, aggregated_rating;
+    fields name, country, description, developed.name;
+    where developed != null;
     limit 10;
   `;
-  const endpoint = "games";
+  const endpoint = "companies"; 
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/igdb`, {
     method: "POST",
@@ -15,6 +16,6 @@ export async function searchFromIGDB(term: string, category: string) {
     cache: "no-store",
   });
 
-  if (!res.ok) throw new Error("Misslyckades att hämta speldata");
+  if (!res.ok) throw new Error("Misslyckades att hämta studios");
   return res.json();
 }

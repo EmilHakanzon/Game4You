@@ -5,6 +5,7 @@ export async function fetchGames() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      endpoint: "games", 
       query: `
         fields name, cover.url, summary, aggregated_rating;
         sort aggregated_rating desc;
@@ -14,7 +15,7 @@ export async function fetchGames() {
     }),
     cache: "no-store",
   });
-// console.log(JSON);
+
   if (!res.ok) throw new Error("Failed to fetch games");
   return res.json();
 }
