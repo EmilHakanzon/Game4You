@@ -5,9 +5,9 @@ export async function fetchGames() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      endpoint: "games", 
+      endpoint: "games",
       query: `
-        fields name, cover.url, summary, aggregated_rating;
+    fields name, cover.url, involved_companies.company.name, aggregated_rating, summary, genres.name, platforms.name, release_dates.date, release_dates.platform.name;
         sort aggregated_rating desc;
         where rating > 93;
         limit 8;
