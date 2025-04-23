@@ -14,14 +14,17 @@ interface CardHomeProps {
   games: Game[];
 }
 
-export default function CardHome({ games }: CardHomeProps) {
+export default function CardHome({
+  games,
+  setSelectedGame,
+}: CardHomeProps & { setSelectedGame: (game: Game) => void }) {
   return (
     <>
       <main className="p-6 mt-20">
         <LoadingSpinner />
-        {/* Rubrik  */}
+        {/* Rubrik */}
         <Header title="Fan Favorites" />
-        {/* Kort  */}
+        {/* Kort */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
           initial="hidden"
@@ -36,7 +39,11 @@ export default function CardHome({ games }: CardHomeProps) {
           }}
         >
           {games.map((game) => (
-            <GameCard key={game.id} game={game} />
+            <GameCard
+              key={game.id}
+              game={game}
+              setSelectedGame={setSelectedGame}
+            />
           ))}
         </motion.div>
       </main>
