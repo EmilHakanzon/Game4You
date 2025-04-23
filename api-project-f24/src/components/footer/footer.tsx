@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import useLoadingStore from "../../store/LoadingDelay";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -7,10 +6,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         {/* Left - Logo/Text */}
         <div className="flex items-center space-x-2">
-          <h1 className="text-xl font-bold bg-gradient-to-r from-white via-blue-500 to-purple-500 text-transparent bg-clip-text">
-            Game4You
-          </h1>
-
+          <Link href="/">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-white via-blue-500 to-purple-500 text-transparent bg-clip-text">
+              Game4You
+            </h1>
+          </Link>
           <p className="text-[#F1F5F9] text-sm mt-4">
             © {new Date().getFullYear()} Game4You. <br></br>All rights
             reserved.

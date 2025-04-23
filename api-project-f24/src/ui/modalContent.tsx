@@ -23,7 +23,7 @@ export const GameModalContent = ({ game, onClose }: GameModalContentProps) => {
 
   const developers = getDevelopers(involved_companies);
   const validRelease = getValidRelease(release_dates);
-  console.log("Game object:", game);
+  // console.log("Game object:", game);
   return (
     <DialogPanel className="bg-zinc-900 text-white p-6 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
       <DialogTitle className="text-xl font-bold flex justify-between items-center">
