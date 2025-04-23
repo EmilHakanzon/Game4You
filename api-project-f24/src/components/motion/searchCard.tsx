@@ -21,9 +21,11 @@ export default function SearchCard({ game, setSelectedGame }: SearchCardProps) {
           className="rounded mb-3 w-full h-60 object-cover"
         />
       ) : (
-        <div className="h-40 rounded mb-3 bg-gray-700 flex items-center justify-center">
-          <p className="text-sm text-gray-400">No Image</p>
-        </div>
+          <img
+            src="/missingImg.jpg"
+            alt="Missing Image"
+            className="rounded mb-3 w-full h-60 object-fit"
+          />
       )}
       <p className="text-sm font-medium text-[#F1F5F9] text-center">
         {game.name}
