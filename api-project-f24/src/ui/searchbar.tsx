@@ -1,31 +1,19 @@
 "use client";
 import { ChevronDown, Loader2 } from "lucide-react";
-import { useSearchStore } from "../store/searchState";
-import { useState } from "react";
-
-const dropdownOptions = ["Games", "Companies", "Studios"];
+import { useSearchComponent } from "@/components/search/searchComponent";
 
 export const SearchBar = () => {
-  const { input, setInput, handleSearch, clearSearch } =
-      useSearchStore();
-  const [showFilter, setShowFilter] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
-
-  const handleSelect = (option: string) => {
-    setShowFilter(false);
-  };
-
-  const handleSearchWithLoading = async () => {
-    if (!input.trim()) return;
-    setIsSearching(true);
-    try {
-      await handleSearch();
-    } catch (error) {
-      console.error("failed to search...", error);
-    } finally {
-      setIsSearching(false);
-    }
-  };
+  const {
+    input,
+    setInput,
+    handleSearchWithLoading,
+    clearSearch,
+    showFilter,
+    setShowFilter,
+    isSearching,
+    dropdownOptions,
+    handleSelect,
+  } = useSearchComponent();
 
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 w-full relative pl-[250px]">
@@ -42,7 +30,7 @@ export const SearchBar = () => {
             {dropdownOptions.map((option) => (
               <button
                 key={option}
-                onClick={() => handleSelect(option as any)}
+                onClick={() => handleSelect(option)}
                 className="block w-full text-left px-4 py-2 hover:bg-purple-600"
               >
                 {option}
@@ -69,7 +57,7 @@ export const SearchBar = () => {
               handleSearchWithLoading();
             }
           }}
-          placeholder={`Search for ...`} 
+          placeholder={`Search for ...`}
           className="px-4 py-2 rounded bg-purple-600 text-white w-full"
         />
         {isSearching && (
