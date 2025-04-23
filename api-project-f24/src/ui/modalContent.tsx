@@ -18,11 +18,12 @@ export const GameModalContent = ({ game, onClose }: GameModalContentProps) => {
     genres,
     involved_companies,
     release_dates,
+    screenshots,
   } = game;
 
-const developers = getDevelopers(involved_companies)
-const validRelease = getValidRelease(release_dates);
-
+  const developers = getDevelopers(involved_companies);
+  const validRelease = getValidRelease(release_dates);
+  console.log("Game object:", game);
   return (
     <DialogPanel className="bg-zinc-900 text-white p-6 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
       <DialogTitle className="text-xl font-bold flex justify-between items-center">
@@ -31,14 +32,27 @@ const validRelease = getValidRelease(release_dates);
           <X size={20} />
         </button>
       </DialogTitle>
+      <div className="flex gap-4">
+        {cover?.url && (
+          <img
+            src={cover.url.replace("t_thumb", "t_cover_big")}
+            alt={name}
+            className="rounded mb-4 pt-1"
+          />
+        )}
 
-      {cover?.url && (
-        <img
-          src={cover.url.replace("t_thumb", "t_cover_big")}
-          alt={name}
-          className="rounded mb-4 pt-1"
-        />
-      )}
+        {screenshots?.length > 0 && (
+          <div className="flex flex-col gap-2 w-1/2">
+            {screenshots.slice(0, 3).map((screenshot, index) => (
+              <img
+                key={index}
+                src={screenshot.url.replace("t_thumb", "t_screenshot_med")}
+                className="rounded pt-1 mb-4"
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       {summary && <p className="text-sm text-zinc-300 mb-4">{summary}</p>}
 
