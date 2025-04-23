@@ -12,7 +12,8 @@ export type Game = {
     developer: boolean;
   }[];
   release_dates: {
-    date?: number; 
-    platform: { name: string }; 
+    date?: number;
+    platform: { name: string };
   }[];
+  screenshots: { url: string }[];
 };
