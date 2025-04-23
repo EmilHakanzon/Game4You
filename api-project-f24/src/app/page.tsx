@@ -6,7 +6,8 @@ import { useSearchStore } from "../store/searchState";
 import useLoadingStore from "../store/LoadingDelay";
 import LoadingSpinner from "@/ui/loadingSpinner";
 import { GameModal } from "@/components/modal/gamemodal";
-
+import SearchCard from "@/components/motion/searchCard";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const { results, searchActive, setSelectedGame } = useSearchStore();
@@ -36,26 +37,27 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold mb-4 pl-15 text-white">
             Search Results
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={{
+              show: {
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
             {results.map((game) => (
-              <div
+              <SearchCard
                 key={game.id}
-                className="bg-[#1E293B] p-3 rounded-lg shadow hover:shadow-[0_4px_6px_-1px_#7C3AED] transition-all max-w-[180px] mx-auto transform hover:scale-105 duration-300 ease-in-out"
-                onClick={() => setSelectedGame(game)}
-              >
-                {game.cover?.url && (
-                  <img
-                    src={game.cover.url.replace("t_thumb", "t_logo_med")}
-                    alt={game.name}
-                    className="rounded mb-3 w-full h-60 object-cover"
-                  />
-                )}
-                <h3 className="text-sm font-semibold text-[#F1F5F9]">
-                  {game.name}
-                </h3>
-              </div>
+                game={game}
+                setSelectedGame={setSelectedGame}
+              />
             ))}
-          </div>
+          </motion.div>
         </div>
       ) : (
         <CardHome games={fanFavorites} setSelectedGame={setSelectedGame} />
