@@ -16,7 +16,7 @@ export const SearchBar = () => {
   } = useSearchComponent();
 
   return (
-    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 w-full relative pl-[250px]">
+    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 w-full relative pl-[200px]">
       {/* Filter Dropdown */}
       <div className="relative">
         <button
