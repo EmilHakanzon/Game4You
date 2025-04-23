@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    // Hämta OAuth-token från Twitch
+    // Fetch OAuth token from Twitch
     const authRes = await fetch("https://id.twitch.tv/oauth2/token", {
       method: "POST",
       headers: {
@@ -16,17 +16,17 @@ export async function POST(request: Request) {
     });
 
     const authData = await authRes.json();
-    const { query } = await request.json();
+    const { query, endpoint } = await request.json(); // Extract `endpoint` from the request body
 
-    // Gör API-anrop till IGDB
+    // Make API call to IGDB
     const igdbRes = await fetch(
-      `${process.env.NEXT_PUBLIC_IGDB_BASE_URL}/games`,
+      `${process.env.NEXT_PUBLIC_IGDB_BASE_URL}/${endpoint}`, // Use dynamic endpoint
       {
         method: "POST",
         headers: {
           "Client-ID": process.env.TWITCH_CLIENT_ID!,
           Authorization: `Bearer ${authData.access_token}`,
-          "Content-Type": "text/plain", 
+          "Content-Type": "text/plain",
         },
         body: query, 
       },
@@ -36,6 +36,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(igdbData);
   } catch (error) {
+    console.error("IGDB API Error:", error);
     return NextResponse.json({ error: "IGDB API Error" }, { status: 500 });
   }
 }

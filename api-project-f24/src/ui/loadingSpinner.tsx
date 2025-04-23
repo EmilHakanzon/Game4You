@@ -1,8 +1,8 @@
-import useLoadingStore from "../../store/LoadingDelay";
+import useLoadingStore from "../store/LoadingDelay";
 
 export default function LoadingSpinner() {
   const isLoading = useLoadingStore((state) => state.isLoading);
- console.log("Spinner isLoading:", isLoading);
+  console.log("Spinner isLoading:", isLoading);
   if (!isLoading) return null; // bara rendring när den har laddas
 
   return (

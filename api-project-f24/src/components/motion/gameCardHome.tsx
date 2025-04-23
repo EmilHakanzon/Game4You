@@ -1,20 +1,18 @@
+import type { Game } from "@/types/types";
 import { popup } from "@/utility/animationCardHome";
 import { motion } from "framer-motion";
 
 interface GameCardProps {
-  game: {
-    id: number;
-    name:string;
-    cover?: {url:string};
-  };
+  game: Game;
 }
 
-export default function GameCardHome({game}: GameCardProps) {
+export default function GameCardHome({game, setSelectedGame}: GameCardProps & { setSelectedGame: (game: GameCardProps["game"]) => void }) {
   return (
     <motion.div
       key={game.id}
       variants={popup}
       className="bg-[#1E293B] p-3 rounded-lg shadow hover:shadow-[0_4px_6px_-1px_#7C3AED] transition-all max-w-[180px] mx-auto"
+      onClick={() => setSelectedGame(game)}
     >
       {game.cover?.url ? (
         <img
