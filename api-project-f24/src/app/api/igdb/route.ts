@@ -28,7 +28,7 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${authData.access_token}`,
           "Content-Type": "text/plain",
         },
-        body: query, // Send the query as the body
+        body: query, 
       },
     );
 

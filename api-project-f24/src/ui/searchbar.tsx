@@ -6,13 +6,12 @@ import { useState } from "react";
 const dropdownOptions = ["Games", "Companies", "Studios"];
 
 export const SearchBar = () => {
-  const { input, setInput, handleSearch, clearSearch, setCategory, category } =
-    useSearchStore();
+  const { input, setInput, handleSearch, clearSearch } =
+      useSearchStore();
   const [showFilter, setShowFilter] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-  const handleSelect = (value: "Games" | "Companies" | "Studios") => {
-    setCategory(value);
+  const handleSelect = (option: string) => {
     setShowFilter(false);
   };
 
@@ -70,7 +69,7 @@ export const SearchBar = () => {
               handleSearchWithLoading();
             }
           }}
-          placeholder={`Search for ${category.toLowerCase()}...`} 
+          placeholder={`Search for ...`} 
           className="px-4 py-2 rounded bg-purple-600 text-white w-full"
         />
         {isSearching && (

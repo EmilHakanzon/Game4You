@@ -1,12 +1,12 @@
-export async function searchFromIGDB(term: string, category: string) {
+export async function searchFromIGDB(term: string) {
   const query = `
     search "${term}";
-    fields name, cover.url, summary, aggregated_rating;
-    limit 10;
+    fields name, cover.url, involved_companies.company.name, aggregated_rating, summary, genres.name, platforms.name, release_dates.date, release_dates.platform.name;
+    limit 50;
   `;
   const endpoint = "games";
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/igdb`, {
+  const res = await fetch("/api/igdb", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,6 +15,6 @@ export async function searchFromIGDB(term: string, category: string) {
     cache: "no-store",
   });
 
-  if (!res.ok) throw new Error("Misslyckades att hämta speldata");
+  if (!res.ok) throw new Error("Failed to get any games...");
   return res.json();
 }
