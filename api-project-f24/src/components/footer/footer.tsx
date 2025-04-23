@@ -7,11 +7,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         {/* Left - Logo/Text */}
         <div className="flex items-center space-x-2">
-          <img
-            src="/81eb0529-e79f-4ef4-aa52-b5992be36f31.jpg"
-            alt="Game4You"
-            className="w-15 h-15 bg-purple-600 rounded-full"
-          />
+          <h1 className="text-xl font-bold bg-gradient-to-r from-white via-blue-500 to-purple-500 text-transparent bg-clip-text">
+            Game4You
+          </h1>
+
           <p className="text-[#F1F5F9] text-sm mt-4">
             © {new Date().getFullYear()} Game4You. <br></br>All rights
             reserved.

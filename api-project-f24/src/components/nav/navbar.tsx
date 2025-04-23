@@ -7,7 +7,7 @@ import { SearchBar } from "@/ui/searchbar";
 export default function Navbar() {
   return (
     <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between space-x-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-center">
         {/* Logo */}
         <LogoNav />
         {/* Search */}
