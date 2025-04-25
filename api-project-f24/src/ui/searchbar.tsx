@@ -57,7 +57,7 @@ export const SearchBar = () => {
               handleSearchWithLoading();
             }
           }}
-          placeholder={`Search for ...`}
+          placeholder="Search for a game"
           className="px-4 py-2 rounded bg-purple-600 text-white w-full"
         />
         {isSearching && (
