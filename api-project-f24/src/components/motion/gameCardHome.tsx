@@ -6,7 +6,10 @@ interface GameCardProps {
   game: Game;
 }
 
-export default function GameCardHome({game, setSelectedGame}: GameCardProps & { setSelectedGame: (game: GameCardProps["game"]) => void }) {
+export default function GameCardHome({
+  game,
+  setSelectedGame,
+}: GameCardProps & { setSelectedGame: (game: GameCardProps["game"]) => void }) {
   return (
     <motion.div
       key={game.id}
