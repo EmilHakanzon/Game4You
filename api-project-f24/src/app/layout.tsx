@@ -2,6 +2,7 @@
 import "./globals.css";
 import NavBar from "@/components/nav/navbar";
 import Footer from "@/components/footer/footer";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Game4You",
@@ -16,11 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-            <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen">
+          <NavBar />
+          <Toaster />
 
-        <NavBar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>
