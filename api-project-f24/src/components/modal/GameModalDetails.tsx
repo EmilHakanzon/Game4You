@@ -1,5 +1,7 @@
 import { getDevelopers, getValidRelease } from "@/utility/gameUtilis";
 import type { Game } from "@/types/types";
+import EditableStars from "../../ui/EditableStars";
+import { useRatingStore } from "@/store/ratingState";
 
 export const GameModalDetails = ({ game }: { game: Game }) => {
   const {
@@ -9,10 +11,22 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
     genres,
     release_dates,
     involved_companies,
+    id,
   } = game;
 
   const release = getValidRelease(release_dates);
   const developers = getDevelopers(involved_companies);
+
+  const { ratings, addRating } = useRatingStore();
+
+  const getExistingRating = () => {
+    const existing = ratings.find((r) => r.gameId === game.id.toString());
+    return existing ? existing.rating : 0; // Returnera 0 om ingen rating finns
+  };
+
+  const handleRatingChange = (newRating: number) => {
+    addRating(game.id.toString(), newRating, game.cover.url, game.name);
+  };
 
   return (
     <div className="text-sm text-zinc-300 space-y-2 mb-4">
@@ -50,6 +64,13 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
           {genres.map((g) => g.name).join(", ")}
         </p>
       )}
+
+      <div className="pt-4">
+        <EditableStars
+          currentRating={getExistingRating()}
+          onRatingChange={handleRatingChange}
+        />
+      </div>
     </div>
   );
 };
