@@ -55,7 +55,7 @@ const OverviewRatings = () => {
       </div>
 
       {/* See All Button */}
-      <Link href="/rating">
+      <Link href="/ratings">
         <button className="mt-4 px-6 py-2 bg-[#3B82F6] hover:bg-[#2563EB] rounded-full text-white font-semibold transition">
           See All Ratings
         </button>

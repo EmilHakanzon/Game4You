@@ -25,7 +25,7 @@ const RatingCard = ({
       {/* Remove Button */}
       <button
         onClick={onRemove}
-        className="relative right-2 text-white hover:text-red-500 transition-colors z-50"
+        className=" -ml-0.5 text-white hover:text-red-500 transition-colors z-50"
       >
         <X size={20} />
       </button>
