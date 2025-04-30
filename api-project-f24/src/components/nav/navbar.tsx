@@ -3,19 +3,28 @@
 import DropDown from "@/ui/dropdown";
 import LogoNav from "@/ui/logoNav";
 import { SearchBar } from "@/ui/searchbar";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  // usePathname används för att hämta den aktuela sidan path
+  // sedan så säkerställer den att searchbar bara rederas på home
+  const pathname = usePathname();
+
   return (
     <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <LogoNav />
-        {/* Search */}
-        <SearchBar />
+        {/* SearchBar */}
+        <div className="flex-1 flex justify-center">
+          {pathname === "/" && <SearchBar />}
+        </div>
         {/* Dropdown */}
-        <DropDown />
-        {/* Konto-knapp */}
-        <div className="w-8 h-8 bg-purple-600 rounded-md" />
+        <div className="flex items-center gap-4">
+          <DropDown />
+          {/* Konto-knapp */}
+          <div className="w-8 h-8 bg-purple-600 rounded-md" />
+        </div>
       </div>
     </header>
   );
