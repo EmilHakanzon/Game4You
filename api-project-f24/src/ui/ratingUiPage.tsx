@@ -1,13 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { useRatingStore } from "@/store/ratingState";
 import AverageRating from "@/components/Rating/AverageRating";
 import RatingCard from "@/components/Rating/RatingCard";
+import RatingFilter from "@/components/Rating/ratingFIlter";
 
 const RatingUiPage = () => {
   const { ratings, updateRating, getAverageRating, removeRating } =
     useRatingStore();
+  const [filter, setFilter] = useState<number | null>(null); // Filter för betyg
 
+  // Skapar en funktion för att hantera betygsändringar, som uppdaterar betyget i store
+  // och tar emot gameId och det nya betyget som argument
   const handleRatingChange = (gameId: string, newRating: number) => {
     updateRating(gameId, newRating);
   };
@@ -15,6 +20,11 @@ const RatingUiPage = () => {
   const handleRemoveRating = (gameId: string) => {
     removeRating(gameId);
   };
+
+  // Filtrera betyg baserat på valt filter
+  const filteredRatings = filter
+    ? ratings.filter((rating) => rating.rating === filter)
+    : ratings;
 
   if (ratings.length === 0) {
     return (
@@ -26,16 +36,20 @@ const RatingUiPage = () => {
 
   return (
     <div className="p-6 mt-20">
-      <h1 className="text-3xl font-bold text-white mb-8 text-center">
+      <h1 className="text-3xl font-bold text-white mb-5 text-center">
         My Ratings...
       </h1>
-
       {/* Average Rating */}
       <AverageRating average={getAverageRating()} />
-
+      {/* Antal spel */}
+      <p className="text-white text-center mb-4 -mt-2">
+        Total Rated Games: {ratings.length}
+      </p>
+      {/* Filter */}
+      <RatingFilter filter={filter} setFilter={setFilter} />
       {/* List of Ratings */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {ratings.map((rating) => (
+        {filteredRatings.map((rating) => (
           <RatingCard
             key={rating.gameId}
             gameId={rating.gameId}
