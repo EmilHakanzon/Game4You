@@ -62,7 +62,7 @@ export const useRatingStore = create<RatingState>()(
       },
     }),
     {
-      // skapar en cache
+      // skapar en localStorage för att spara betyg
       name: "rating-storage",
       storage: {
         getItem: (name) => {
