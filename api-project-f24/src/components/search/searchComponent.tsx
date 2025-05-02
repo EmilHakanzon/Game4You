@@ -2,9 +2,6 @@
 import { useSearchStore } from "@/store/searchState";
 import { useState } from "react";
 
-// TODO: ta bort dessa och har ny filter....
-const dropdownOptions = ["Games", "Companies", "Studios"];
-
 export const useSearchComponent = () => {
   const { input, setInput, handleSearch, clearSearch } = useSearchStore();
   const [showFilter, setShowFilter] = useState(false);
@@ -35,7 +32,6 @@ export const useSearchComponent = () => {
     showFilter,
     setShowFilter,
     isSearching,
-    dropdownOptions,
     handleSelect,
   };
 };

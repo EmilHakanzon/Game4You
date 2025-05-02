@@ -50,7 +50,7 @@ export const useFavoriteStore = create<FavoriteStore>()(
             favorites: state.favorites.filter((game) => game.id !== id),
             xp: newXP,
             level: newLevel,
-            levelUp: true, //  kan sätta true om du vill trigga "Level down"-animation
+            levelUp: true, //  kan sätta true om man vill trigga "Level down"-animation
           }));
         }
       },
