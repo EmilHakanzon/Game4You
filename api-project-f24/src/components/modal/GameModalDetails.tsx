@@ -2,6 +2,7 @@ import { getDevelopers, getValidRelease } from "@/utility/gameUtilis";
 import type { Game } from "@/types/types";
 import EditableStars from "../../ui/EditableStars";
 import { useRatingStore } from "@/store/ratingState";
+import GameModalList from "./GameModalList";
 
 export const GameModalDetails = ({ game }: { game: Game }) => {
   const {
@@ -65,12 +66,14 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
         </p>
       )}
 
-      <div className="pt-4">
+      <div className="pt-4 pl-[3px]">
         <EditableStars
           currentRating={getExistingRating()}
           onRatingChange={handleRatingChange}
         />
       </div>
+      {/*List*/}
+      <GameModalList game={{ id: game.id.toString(), name: game.name, image: game.cover.url }} />
     </div>
   );
 };
