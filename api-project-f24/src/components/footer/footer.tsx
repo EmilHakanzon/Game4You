@@ -19,16 +19,16 @@ export default function Footer() {
 
         {/* Center - Links */}
         <div className="flex space-x-6 text-sm pr-25">
-          <a href="#" className="hover:text-purple-400 transition">
+          <a href="/" className="hover:text-purple-400 transition">
             Home
           </a>
-          <a href="#" className="hover:text-purple-400 transition">
+          <a href="/overview" className="hover:text-purple-400 transition">
             Overview
           </a>
-          <a href="#" className="hover:text-purple-400 transition">
+          <a href="/list" className="hover:text-purple-400 transition">
             List
           </a>
-          <a href="#" className="hover:text-purple-400 transition">
+          <a href="/ratings" className="hover:text-purple-400 transition">
             Ratings
           </a>
         </div>
