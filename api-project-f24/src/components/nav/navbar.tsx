@@ -20,10 +20,11 @@ export default function Navbar() {
           {pathname === "/" && <SearchBar />}
         </div>
         {/* Dropdown */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center pr-5">
           <DropDown />
           {/* Konto-knapp */}
-          <div className="w-8 h-8 bg-purple-600 rounded-md" />
+          <img src="avatar.png" alt="gamingavatar" 
+          className="object-contain w-12 h-12"/>
         </div>
       </div>
     </header>

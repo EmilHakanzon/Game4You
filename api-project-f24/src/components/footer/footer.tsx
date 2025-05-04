@@ -7,14 +7,14 @@ export default function Footer() {
         {/* Left - Logo/Text */}
         <div className="flex items-center space-x-2">
           <Link href="/">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-white via-blue-500 to-purple-500 text-transparent bg-clip-text">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white via-blue-500 to-purple-500 text-transparent bg-clip-text">
               Game4You
             </h1>
+            <p className="text-[#F1F5F9] text-sm mt-1">
+              © {new Date().getFullYear()} Game4You. <br></br>All rights
+              reserved.
+            </p>
           </Link>
-          <p className="text-[#F1F5F9] text-sm mt-4">
-            © {new Date().getFullYear()} Game4You. <br></br>All rights
-            reserved.
-          </p>
         </div>
 
         {/* Center - Links */}
@@ -34,15 +34,16 @@ export default function Footer() {
         </div>
 
         {/* Right - Icons */}
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 pr-5">
           <a
             href="https://github.com/EmilJohanssonz/framework-project-f24"
             target="_blank"
+            className="hover:bg-[#7C3AED] p-1 rounded-full transition"
           >
             <img
-              src="/github.png"
+              src="/githublogo.png"
               alt="GitHub"
-              className="w-10 h-10 rounded-full"
+              className="w-10 h-10 rounded-full hover:scale-110 transition"
             />
           </a>
         </div>
