@@ -1,6 +1,7 @@
 import { DialogTitle } from "@headlessui/react";
 import { HeartIcon, X } from "lucide-react";
 import { useFavoriteStore } from "@/store/favoriteStore";
+import { useIsFavorite } from "@/hook/useIsFavorite";
 import type { Game } from "@/types/types";
 import { toast } from "sonner";
 
@@ -10,17 +11,17 @@ interface Props {
 }
 
 export const GameModalHeader = ({ game, onClose }: Props) => {
-  const { addFavorite, removeFavorite, isFavorite } = useFavoriteStore();
-  const isFav = isFavorite(game.id);
+  const { addFavorite, removeFavorite } = useFavoriteStore();
+  const isFav = useIsFavorite(game.id.toString()); 
 
   const toggleFavorite = () => {
-   if (isFav) {
-    removeFavorite(game.id);
-    toast.error("Removed from favorites");
-   } else {
-    addFavorite(game);
-    toast.success("Added to favorites");
-   }
+    if (isFav) {
+      removeFavorite(game.id);
+      toast.error("Removed from favorites");
+    } else {
+      addFavorite(game);
+      toast.success("Added to favorites");
+    }
   };
 
   return (
