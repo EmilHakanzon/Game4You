@@ -1,3 +1,4 @@
+"use client"
 import { UseGameListStore } from "@/store/gameListState";
 import { useState } from "react";
 
