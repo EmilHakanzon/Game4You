@@ -13,7 +13,7 @@ const FavoriteList = () => {
   if (favorites.length === 0) return null;
 
   return (
-    <div className="mt-6  pt-4">
+    <div className="mt-6 pl-3">
       <button
         onClick={() => setShowList(!showList)}
         className="flex items-center gap-1 text-sm text-[#3B82F6] hover:underline mb-4"

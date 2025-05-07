@@ -55,6 +55,7 @@ const OverviewRatings = () => {
           See All Ratings
         </button>
       </Link>
+    
     </div>
   );
 };
