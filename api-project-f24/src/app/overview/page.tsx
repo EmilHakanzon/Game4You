@@ -13,9 +13,7 @@ export default function OverviewPage() {
       {/* <div className="rounded-lg">
         <img src="/Skärmbild 2025-05-06 190955.jpg" alt="hero-img" className="w-full "/>
       </div> */}
-      <main className="pl-[230px]">
         <OverViewList />
-      </main>
     </div>
   );
 }

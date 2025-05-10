@@ -5,8 +5,6 @@ import GameListItem from "@/ui/GameListItem";
 const GameListPage = () => {
   const { games } = UseGameListStore();
 
-  // Denna funktion grupperar spelen efter listnamn
-  // och returnerar ett objekt där varje nyckel är ett listnamn
   const groupedByList = games.reduce(
     (acc, game) => {
       if (!acc[game.listName]) acc[game.listName] = [];
@@ -17,14 +15,20 @@ const GameListPage = () => {
   );
 
   return (
-    <div className="p-6 space-y-8">
-      <h1 className="text-2xl font-bold pl-20">Your Game Lists</h1>
+    <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-8 space-y-12 max-w-7xl mx-auto">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center md:text-left text-slate-100">
+        Your Game Lists
+      </h1>
 
       {Object.entries(groupedByList).map(([listName, listGames]) => (
         <div key={listName}>
-          <h2 className="text-xl font-semibold mb-2 -mt-5 pl-20">{listName}</h2>
-          <GameListSummary games={listGames} />
-          <div className="mt-5 pl-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <h2 className="text-xl sm:text-2xl text-center md:text-left font-semibold mb-4  text-slate-200">
+            {listName}
+          </h2>
+          <div className="flex justify-center items-center pr-10 md:text-left md:justify-start md:-ml-16">
+            <GameListSummary games={listGames} />
+          </div>
+          <div className="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {listGames.map((game) => (
               <GameListItem key={game.id} game={game} />
             ))}

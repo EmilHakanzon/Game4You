@@ -38,7 +38,8 @@ export const SearchBar = () => {
           className="px-4 py-2 rounded bg-purple-600 text-white w-full"
         />
         {isSearching && (
-          <Loader2 className="w-5 h-5 text-blue-400 animate-spin absolute right-[220px] mt-2" />
+          <Loader2 
+          className="w-5 h-5 text-blue-400 animate-spin absolute right-[220px] mt-2 " />
         )}
       </div>
     </div>

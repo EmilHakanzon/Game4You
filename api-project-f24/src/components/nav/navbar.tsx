@@ -4,29 +4,50 @@ import DropDown from "@/ui/dropdown";
 import LogoNav from "@/ui/logoNav";
 import { SearchBar } from "@/ui/searchbar";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi"; 
+import MobileMenu from "@/components/nav/mobileMenu";
 
 export default function Navbar() {
-  // usePathname används för att hämta den aktuela sidan path
-  // sedan så säkerställer den att searchbar bara rederas på home
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <LogoNav />
-        {/* SearchBar */}
-        <div className="flex-1 flex justify-center">
+
+        {/* SearchBar for Desktop */}
+        <div className="hidden md:flex flex-1 justify-center">
           {pathname === "/" && <SearchBar />}
         </div>
-        {/* Dropdown */}
-        <div className="flex items-center pr-5">
+
+        {/* Dropdown and Avatar for Desktop */}
+        <div className="hidden md:flex items-center pr-5">
           <DropDown />
-          {/* Konto-knapp */}
-          <img src="avatar.png" alt="gamingavatar" 
-          className="object-contain w-12 h-12"/>
+          <img
+            src="avatar.png"
+            alt="gamingavatar"
+            className="object-contain w-12 h-12"
+          />
         </div>
+
+        {/* Hamburger Menu for Mobile */}
+        <button
+          className="md:hidden flex items-center text-white"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? (
+            <HiX className="w-8 h-8" />
+          ) : (
+            <HiMenu className="w-8 h-8" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <MobileMenu isOpen={isMenuOpen} pathname={pathname} />
     </header>
   );
 }

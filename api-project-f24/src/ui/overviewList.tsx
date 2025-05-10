@@ -12,17 +12,20 @@ const OverviewLists = () => {
   }, {});
 
   return (
-    <div className="space-y-6  p-4 rounded-lg  transition max-w-[530px] ">
+    <div className="space-y-8 px-4 sm:px-6 md:px-10 py-6 max-w-3xl mx-auto">
       {Object.entries(grouped)
         .slice(0, 2)
         .map(([listName, games]) => (
           <div key={listName}>
-            <h2 className="text-xl text-white font-bold mb-5">{listName}</h2>
-            <div className="flex gap-15 ">
+            <h2 className="text-xl sm:text-2xl text-white font-bold mb-4 text-center sm:text-left">
+              {listName}
+            </h2>
+
+            <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700 pb-2">
               {games.slice(0, 4).map((game) => (
                 <div
                   key={game.id}
-                  className="max-w-[150px] bg-[#1E293B] rounded-lg p-3 flex-shrink-0 hover:shadow-[0_4px_6px_1px_#7C3AED]"
+                  className="min-w-[140px] max-w-[150px] bg-[#1E293B] rounded-lg p-3 flex-shrink-0 hover:shadow-[0_4px_6px_1px_#7C3AED] transition-shadow"
                 >
                   <Link href="/list">
                     <img
@@ -32,7 +35,7 @@ const OverviewLists = () => {
                       height={100}
                       className="rounded-md object-cover"
                     />
-                    <div className="mt-4 text-sm text-white font-medium">
+                    <div className="mt-3 text-sm text-white font-medium truncate">
                       {game.name}
                     </div>
                   </Link>
