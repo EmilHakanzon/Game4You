@@ -26,6 +26,35 @@ Tool	Description
 - IGDB API	Game data and media API
 
 ---
+## 📁 Project Folder Structure
+
+Here's a breakdown of the core structure of **Game4You**:
+
+📦 src/
+├── 📂 app/ # Next.js App Router structure
+│ ├── 📂 api/ # API routes
+│ ├── 📂 list/ # Game lists & related pages
+│ ├── 📂 overview/ # Overview or dashboard views
+│ ├── 📂 ratings/ # Pages for user ratings
+│ ├── 📄 layout.tsx # Global layout for app
+│ └── 📄 page.tsx # Entry point page
+│
+├── 📂 components/ # Reusable UI components
+│ ├── 📂 FavoriteList/ # Favorite games component
+│ ├── 📂 footer/ # Footer layout
+│ ├── 📂 gameList/ # Game listing display
+│ ├── 📂 modal/ # Modal for game info, list actions
+│ ├── 📂 nav/ # Navigation bar
+│ ├── 📂 Rating/ # Star rating component
+│ └── 📂 search/ # Search input and results
+│
+├── 📂 hook/ # Custom React hooks
+├── 📂 store/ # Zustand global state management
+├── 📂 types/ # TypeScript types and interfaces
+├── 📄 globals.css # Global styles (Tailwind base)
+
+---
+
 
 ## 🚀 Getting Started
 ### Clone the project
