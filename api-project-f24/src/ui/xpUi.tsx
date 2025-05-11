@@ -1,3 +1,4 @@
+"use client"
 import { useFavoriteStore } from "@/store/favoriteStore";
 import { HeartIcon } from "lucide-react";
 import { useEffect, useState } from "react";

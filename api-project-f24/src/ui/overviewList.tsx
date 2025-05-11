@@ -1,11 +1,22 @@
 "use client";
+
 import { UseGameListStore } from "@/store/gameListState";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const OverviewLists = () => {
   const { games } = UseGameListStore();
+  const [clientGames, setClientGames] = useState<typeof games>([]);
 
-  const grouped = games.reduce((acc: Record<string, typeof games>, game) => {
+  useEffect(() => {
+    setClientGames(games);
+  }, [games]);
+
+  if (!clientGames || clientGames.length === 0) {
+    return <div className="text-center text-white">No games available.</div>;
+  }
+
+  const grouped = clientGames.reduce((acc: Record<string, typeof games>, game) => {
     if (!acc[game.listName]) acc[game.listName] = [];
     acc[game.listName].push(game);
     return acc;
