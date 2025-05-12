@@ -19,7 +19,8 @@ export const GameModal = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, rotateX: 10, scale: 0.9, y: 50 }}
+            transition={{ duration: 0.3 }}
           />
 
           <motion.div
@@ -32,6 +33,7 @@ export const GameModal = () => {
               stiffness: 180,
               damping: 18,
               duration: 0.5,
+              delay: 0.1,
             }}
           >
             <GameModalContent
