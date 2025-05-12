@@ -21,7 +21,8 @@ const RatingCard = ({
   onRemove,
 }: RatingCardProps) => {
   return (
-    <div className="bg-[#1E293B] p-3 rounded-lg shadow hover:shadow-[0_4px_6px_-1px_#7C3AED] transition-all max-w-[200px]">
+    <div className="bg-[#1E293B] p-3 rounded-lg shadow hover:shadow-[0_4px_6px_-1px_#7C3AED] transition-all max-w-[200px]"
+    data-game-id={gameId}>
       {/* Remove Button */}
       <button
         onClick={onRemove}

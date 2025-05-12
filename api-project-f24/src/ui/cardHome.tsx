@@ -1,14 +1,10 @@
 "use client";
 
-import { fetchGames } from "@/app/api/lib/igdbFetchHome";
 import type { Game } from "../types/types";
 import { motion } from "framer-motion";
-import { fadeIn } from "@/utility/animationCardHome";
-import { useEffect, useState } from "react";
-import useLoadingStore from "../store/LoadingDelay";
-import LoadingSpinner from "./loadingSpinner";
 import GameCard from "@/components/motion/gameCardHome";
 import Header from "@/components/motion/gameCardHomeHeader";
+import LoadingSpinner from "./loadingSpinner";
 
 interface CardHomeProps {
   games: Game[];

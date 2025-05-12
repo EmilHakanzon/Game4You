@@ -18,23 +18,23 @@ export default function Footer() {
 
         {/* Center - Links */}
         <div className="flex flex-wrap justify-center md:justify-start space-x-6 text-sm">
-          <a href="/" className="hover:text-purple-400 transition">
+          <Link href="/" className="hover:text-purple-400 transition">
             Home
-          </a>
-          <a href="/overview" className="hover:text-purple-400 transition">
+          </Link>
+          <Link href="/overview" className="hover:text-purple-400 transition">
             Overview
-          </a>
-          <a href="/list" className="hover:text-purple-400 transition">
+          </Link>
+          <Link href="/list" className="hover:text-purple-400 transition">
             List
-          </a>
-          <a href="/ratings" className="hover:text-purple-400 transition">
+          </Link>
+          <Link href="/ratings" className="hover:text-purple-400 transition">
             Ratings
-          </a>
+          </Link>
         </div>
 
         {/* Right - Icons */}
         <div className="flex justify-center md:justify-end space-x-4">
-          <a
+          <Link
             href="https://github.com/EmilJohanssonz/framework-project-f24"
             target="_blank"
             className="hover:bg-[#7C3AED] p-1 rounded-full transition"
@@ -44,7 +44,7 @@ export default function Footer() {
               alt="GitHub"
               className="w-10 h-10 rounded-full hover:scale-110 transition"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

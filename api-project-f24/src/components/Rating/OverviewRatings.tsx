@@ -10,8 +10,7 @@ const OverviewRatings = () => {
     return (
       <div className=" p-6 rounded-lg shadow-md text-white text-center">
         <h2 className="text-2xl font-bold mb-4">My Game Ratings 🎮</h2>
-        <p className="text-gray-400 mb-4">You haven't rated any games yet!</p>
-
+        <p className="text-gray-400 mb-4">You have not rated any games yet!</p>
         <Link href="/ratings">
           <button className="mt-4 px-6 py-2 bg-[#3B82F6] hover:bg-[#2563EB] rounded-full text-white font-semibold transition">
             Start Rating
@@ -21,7 +20,7 @@ const OverviewRatings = () => {
     );
   }
 
-  // Ta senaste 5 ratings 
+  // Ta senaste 5 ratings
   const latestRated = [...ratings].reverse().slice(0, 5);
   return (
     <div className=" p-6 rounded-lg shadow-md text-white text-center">
@@ -55,7 +54,6 @@ const OverviewRatings = () => {
           See All Ratings
         </button>
       </Link>
-    
     </div>
   );
 };

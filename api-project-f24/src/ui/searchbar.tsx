@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, Loader2 } from "lucide-react";
+import {  Loader2 } from "lucide-react";
 import { useSearchComponent } from "@/components/search/searchComponent";
 
 export const SearchBar = () => {
@@ -8,10 +8,7 @@ export const SearchBar = () => {
     setInput,
     handleSearchWithLoading,
     clearSearch,
-    showFilter,
-    setShowFilter,
     isSearching,
-    handleSelect,
   } = useSearchComponent();
 
   return (

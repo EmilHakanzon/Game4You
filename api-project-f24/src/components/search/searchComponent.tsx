@@ -7,7 +7,7 @@ export const useSearchComponent = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-  const handleSelect = (option: string) => {
+  const handleSelect = () => {
     setShowFilter(false);
   
   };

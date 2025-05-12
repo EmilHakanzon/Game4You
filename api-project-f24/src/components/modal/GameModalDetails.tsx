@@ -30,7 +30,8 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
   };
 
   return (
-    <div className="text-sm text-zinc-300 space-y-2 mb-4">
+    <div className="text-sm text-zinc-300 space-y-2 mb-4"
+    data-game-id={id}>
       {summary && <p>{summary}</p>}
       {release && (
         <p>

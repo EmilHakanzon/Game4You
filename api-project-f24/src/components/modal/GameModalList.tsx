@@ -46,6 +46,18 @@ export const GameModalList = ({
     setNewListName(""); // töm input
   };
 
+  const isValidStatus = (value: string): value is "Not Started" | "Still Playing" | "Completed" => {
+    return ["Not Started", "Still Playing", "Completed"].includes(value);
+  };
+
+  const handleStatusChange = (value:string) => {
+    if (isValidStatus(value)) {
+      setStatus(value);
+    } else {
+      console.error("Invalid status value", value);
+    }
+  };
+
   return (
     <div className="p-4 space-y-4 bg-zinc-800 rounded-lg shadow-md mt-4">
       <h3 className="text-lg font-semibold text-white">Add to Your List</h3>
@@ -68,7 +80,7 @@ export const GameModalList = ({
         </label>
         <select
           value={status}
-          onChange={(e) => setStatus(e.target.value as any)}
+          onChange={(e) => handleStatusChange(e.target.value)}
           className="w-full p-2 rounded bg-zinc-700 text-white border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
         >
           <option>Not Started</option>
