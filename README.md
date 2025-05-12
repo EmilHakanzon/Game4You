@@ -63,6 +63,7 @@ git clone https://github.com/yourusername/Game4You.git
 ```
 ```
 cd Game4You
+then, cd api-project-f24
 ```
 ### Install dependencies
 ```
