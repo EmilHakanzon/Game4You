@@ -14,29 +14,26 @@ export default function HomePage() {
   const [fanFavorites, setFanFavorites] = useState([]);
   const { isLoading, setIsLoading, setIsLoaded } = useLoadingStore();
 
-  useEffect(() => {
-    const hasLoaded = sessionStorage.getItem("hasLoaded");
+useEffect(() => {
+  const hasLoaded = sessionStorage.getItem("hasLoaded");
 
-    const loadFanFavorites = async () => {
-      if (!hasLoaded) {
-        setIsLoading(true);
-        sessionStorage.setItem("hasLoaded", "true");
+  const loadFanFavorites = async () => {
+    if (!hasLoaded) {
+      setIsLoading(true);
+      sessionStorage.setItem("hasLoaded", "true");
+    }
 
-        await fetch("/api/trackVisitors", {
-          method: "GET",
-        });
-      }
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // delay for spinner
+    const data = await fetchGames();
+    setFanFavorites(data);
 
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // delay for spinner
-      const data = await fetchGames();
-      setFanFavorites(data);
+    setIsLoading(false);
+    setIsLoaded(true);
+  };
 
-      setIsLoading(false);
-      setIsLoaded(true);
-    };
+  loadFanFavorites();
+}, [setIsLoading, setIsLoaded]);
 
-    loadFanFavorites();
-  }, [setIsLoading, setIsLoaded]);
 
   if (isLoading) return <LoadingSpinner />;
 

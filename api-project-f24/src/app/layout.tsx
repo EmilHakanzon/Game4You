@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/nav/navbar";
 import Footer from "@/components/footer/footer";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Game4You",
