@@ -52,7 +52,6 @@ const RatingUiPage = () => {
         {filteredRatings.map((rating) => (
           <RatingCard
             key={rating.gameId}
-            gameId={rating.gameId}
             gameImage={rating.gameImage}
             gameName={rating.gameName}
             rating={rating.rating}

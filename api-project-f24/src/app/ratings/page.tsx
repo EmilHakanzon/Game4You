@@ -1,9 +1,10 @@
 "use client";
 
 import RatingUiPage from "@/ui/ratingUiPage";
+import { FC } from "react";
 
-export const RatingPage = () => {
+const RatingPage: FC = () => {
   return <RatingUiPage />;
 };
 
-export default RatingPage
+export default RatingPage;
