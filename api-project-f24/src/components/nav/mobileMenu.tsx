@@ -29,7 +29,7 @@ export default function MobileMenu({ isOpen, pathname }: MobileMenuProps) {
           {/* SearchBar */}
           {pathname === "/" && (
             <div className="flex-1 flex justify-center">
-              <div className="w-full max-w-xs">
+              <div className="w-full max-w-xs px-4">
                 <SearchBar />
               </div>
             </div>
