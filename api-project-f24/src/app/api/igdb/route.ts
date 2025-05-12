@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    // Fetch OAuth token from Twitch
+    // Hämta OAuth token från Twitch
     const authRes = await fetch("https://id.twitch.tv/oauth2/token", {
       method: "POST",
       headers: {
@@ -16,11 +16,11 @@ export async function POST(request: Request) {
     });
 
     const authData = await authRes.json();
-    const { query, endpoint } = await request.json(); // Extract `endpoint` from the request body
+    const { query, endpoint } = await request.json(); // Hämta `endpoint` från request body
 
-    // Make API call to IGDB
+    // Hämta data från IGDB API
     const igdbRes = await fetch(
-      `${process.env.NEXT_PUBLIC_IGDB_BASE_URL}/${endpoint}`, // Use dynamic endpoint
+      `${process.env.NEXT_PUBLIC_IGDB_BASE_URL}/${endpoint}`, // Använd dynamiskt endpoint
       {
         method: "POST",
         headers: {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${authData.access_token}`,
           "Content-Type": "text/plain",
         },
-        body: query, 
+        body: query, // Skicka SQL-liknande frågan för att hämta specifika data
       },
     );
 
