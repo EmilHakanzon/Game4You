@@ -31,8 +31,8 @@ export const SearchBar = () => {
               handleSearchWithLoading();
             }
           }}
-          placeholder="Search for a game"
-          className="px-6 py-3 rounded-lg bg-purple-600 text-white w-full text-lg"
+          placeholder="Search game..."
+          className="p-1 rounded-lg bg-purple-600 text-white w-full text-sm"
         />
         {isSearching && (
           <Loader2 className="w-5 h-5 text-blue-400 animate-spin absolute right-[220px] mt-2 " />

@@ -12,29 +12,24 @@ export default function MobileMenu({ isOpen, pathname }: MobileMenuProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="md:hidden bg-[#1E293B] -mt-2 transition-all duration-300 opacity-90 p-4">
-      <div className="flex flex-col space-y-4">
-        {/* Row: Dropdown, Avatar, and SearchBar */}
-        <div className="flex items-center justify-between space-x-4">
-          {/* Dropdown */}
+    <div className="md:hidden bg-[#1E293B] -mt-2 transition-all duration-300 opacity-80">
+      <div className="flex items-center justify-between">
+        {/* Left: Dropdown and Avatar */}
+        <div className="flex items-center space-x-1">
           <DropDown />
-
-          {/* Avatar */}
           <img
             src="avatar.png"
             alt="gamingavatar"
             className="object-contain w-12 h-12 rounded-full"
           />
-
-          {/* SearchBar */}
-          {pathname === "/" && (
-            <div className="flex-1 flex justify-center">
-              <div className="w-full max-w-xs px-4">
-                <SearchBar />
-              </div>
-            </div>
-          )}
         </div>
+
+        {/* Right: SearchBar */}
+        {pathname === "/" && (
+          <div className="flex-1">
+            <SearchBar />
+          </div>
+        )}
       </div>
     </div>
   );
