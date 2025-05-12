@@ -12,7 +12,6 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
     genres,
     release_dates,
     involved_companies,
-    id,
   } = game;
 
   const release = getValidRelease(release_dates);
@@ -30,8 +29,7 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
   };
 
   return (
-    <div className="text-sm text-zinc-300 space-y-2 mb-4"
-    data-game-id={id}>
+    <div className="text-sm text-zinc-300 space-y-2 mb-4">
       {summary && <p>{summary}</p>}
       {release && (
         <p>
@@ -74,7 +72,13 @@ export const GameModalDetails = ({ game }: { game: Game }) => {
         />
       </div>
       {/*List*/}
-      <GameModalList game={{ id: game.id.toString(), name: game.name, image: game.cover.url }} />
+      <GameModalList
+        game={{
+          id: game.id.toString(),
+          name: game.name,
+          image: game.cover.url,
+        }}
+      />
     </div>
   );
 };

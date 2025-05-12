@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image"; 
 
 export default function Footer() {
   return (
@@ -39,10 +40,12 @@ export default function Footer() {
             target="_blank"
             className="hover:bg-[#7C3AED] p-1 rounded-full transition"
           >
-            <img
-              src="/githublogo.png"
-              alt="GitHub"
-              className="w-10 h-10 rounded-full hover:scale-110 transition"
+            <Image
+              src="/githublogo.png" 
+              alt="GitHub" 
+              width={40} 
+              height={40} 
+              className="rounded-full hover:scale-110 transition"
             />
           </Link>
         </div>
