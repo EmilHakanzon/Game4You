@@ -23,6 +23,7 @@ type GameListStore = {
     totalCompleted: number;
     totalHours: number;
   };
+  fetchGames: () => Promise<void>; // Ny funktion för att hämta speldata
 };
 
 export const UseGameListStore = create<GameListStore>()(
@@ -64,6 +65,15 @@ export const UseGameListStore = create<GameListStore>()(
           totalCompleted: completedGames.length,
           totalHours,
         };
+      },
+      fetchGames: async () => {
+        try {
+          const response = await fetch("/api/games"); //  API-endpoint
+          const data = await response.json();
+          set({ games: data });
+        } catch (error) {
+          console.error("Failed to fetch games:", error);
+        }
       },
     }),
     {
