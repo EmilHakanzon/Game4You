@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi"; 
 import MobileMenu from "@/components/nav/mobileMenu";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -26,7 +27,7 @@ export default function Navbar() {
         {/* Dropdown and Avatar for Desktop */}
         <div className="hidden md:flex items-center pr-5">
           <DropDown />
-          <img
+          <Image
             src="avatar.png"
             alt="gamingavatar"
             className="object-contain w-12 h-12"

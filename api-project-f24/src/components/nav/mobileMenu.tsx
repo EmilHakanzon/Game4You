@@ -2,6 +2,7 @@
 
 import DropDown from "@/ui/dropdown";
 import { SearchBar } from "@/ui/searchbar";
+import Image from "next/image";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -17,7 +18,7 @@ export default function MobileMenu({ isOpen, pathname }: MobileMenuProps) {
         {/* Left: Dropdown and Avatar */}
         <div className="flex items-center space-x-1">
           <DropDown />
-          <img
+          <Image
             src="avatar.png"
             alt="gamingavatar"
             className="object-contain w-12 h-12 rounded-full"
