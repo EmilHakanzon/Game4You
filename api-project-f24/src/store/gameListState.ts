@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { fetchGamesByList } from "@/app/api/lib/fetchGamesByList";
 
 type GameEntry = {
   id: string;
@@ -23,7 +24,7 @@ type GameListStore = {
     totalCompleted: number;
     totalHours: number;
   };
-  fetchGames: () => Promise<void>; // Ny funktion för att hämta speldata
+  fetchGamesByList: (listId: string) => Promise<void>; // Ny funktion för att hämta speldata
 };
 
 export const UseGameListStore = create<GameListStore>()(
@@ -33,7 +34,7 @@ export const UseGameListStore = create<GameListStore>()(
       lists: ["My List"],
       addGameToList: (game) =>
         set((state) => ({
-          games: [...state.games, game],
+          games: [...state.games, { ...game, listName: game.listName }],
         })),
       addList: (listName) =>
         set((state) => ({
@@ -66,13 +67,13 @@ export const UseGameListStore = create<GameListStore>()(
           totalHours,
         };
       },
-      fetchGames: async () => {
+      fetchGamesByList: async (listId: string) => {
         try {
-          const response = await fetch("/api/games"); //  API-endpoint
-          const data = await response.json();
-          set({ games: data });
+          const data = await fetchGamesByList(listId); 
+          console.log(`Fetched games for list ${listId}:`, data);
+          set({ games: data }); 
         } catch (error) {
-          console.error("Failed to fetch games:", error);
+          console.error(`Failed to fetch games for list ${listId}:`, error);
         }
       },
     }),
