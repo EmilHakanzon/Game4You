@@ -11,16 +11,11 @@ interface Props {
 const SingleGameListPage = ({ listId }: Props) => {
   const { games, fetchGames } = UseGameListStore();
   const [copied, setCopied] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    const fetchData = async () => {
     if (games.length === 0) {
-      await fetchGames(); 
-      setIsLoading(false);
+      fetchGames(); // Hämta speldata om det inte redan finns
     }
-  };
-  fetchData();
   }, [games, fetchGames]);
 
   const filteredGames = games.filter((game) => game.listName === listId);
@@ -30,17 +25,6 @@ const SingleGameListPage = ({ listId }: Props) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-white mt-4">Loading games...</p>
-        </div>
-      </div>
-    );
-  }
 
   if (filteredGames.length === 0) {
     return (
