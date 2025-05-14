@@ -9,28 +9,21 @@ interface Props {
 }
 
 const SingleGameListPage = ({ listId }: Props) => {
-  const { games, fetchGamesByList } = UseGameListStore();
-  const [isLoading, setIsLoading] = useState(true); // Lokal laddningsindikator
+  const { games, fetchGames } = UseGameListStore();
   const [copied, setCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        await fetchGamesByList(listId); // Skicka korrekt listId
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    if (games.length === 0) {
+      await fetchGames(); 
+      setIsLoading(false);
+    }
+  };
+  fetchData();
+  }, [games, fetchGames]);
 
-    fetchData();
-  }, [listId]);
-
-  const filteredGames = games.filter((game) => game.listName.toLowerCase() === listId);
-
-  useEffect(() => {
-    console.log("Games:", games);
-    console.log("Filtered games for listId:", listId, filteredGames);
-  }, [games, listId, filteredGames]);
+  const filteredGames = games.filter((game) => game.listName === listId);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href);
