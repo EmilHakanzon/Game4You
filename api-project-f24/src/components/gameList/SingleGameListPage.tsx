@@ -20,7 +20,7 @@ const SingleGameListPage = ({ listId }: Props) => {
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading
+        setIsLoading(false);
       }
     };
 
