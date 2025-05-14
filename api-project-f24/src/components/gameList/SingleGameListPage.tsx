@@ -11,7 +11,7 @@ interface Props {
 const SingleGameListPage = ({ listId }: Props) => {
   const { games, fetchGames } = UseGameListStore();
   const [isLoading, setIsLoading] = useState(true); 
-  const [copied, setCopied] = useState(false);
+  // const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,11 +29,11 @@ const SingleGameListPage = ({ listId }: Props) => {
 
   const filteredGames = games.filter((game) => game.listName === listId);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  // const handleCopy = () => {
+  //   navigator.clipboard.writeText(window.location.href);
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 2000);
+  // };
 
   if (isLoading) {
     return (
@@ -60,12 +60,12 @@ const SingleGameListPage = ({ listId }: Props) => {
         <h1 className="text-2xl sm:text-3xl font-bold text-center md:text-left text-slate-100">
           {listId}
         </h1>
-        <button
+        {/* <button
           onClick={handleCopy}
           className="bg-slate-800 text-white px-3 py-1 rounded hover:bg-slate-700 text-sm"
         >
           {copied ? "Link shared" : "Share link"}
-        </button>
+        </button> */}
       </div>
 
       <GameListSummary games={filteredGames} />
