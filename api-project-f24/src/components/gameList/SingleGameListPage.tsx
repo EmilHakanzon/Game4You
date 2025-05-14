@@ -10,20 +10,24 @@ interface Props {
 
 const SingleGameListPage = ({ listId }: Props) => {
   const { games, fetchGames } = UseGameListStore();
+  const [isLoading, setIsLoading] = useState(true); // Lokal laddningsindikator
   const [copied, setCopied] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
     const fetchData = async () => {
-    if (games.length === 0) {
-      await fetchGames(); 
-    }
-    setIsLoading(false);
-  };
-  fetchData();
-  }, [games, fetchGames]);
+      await fetchGames(); // Hämta speldata
+      setIsLoading(false); // Stäng av laddning när data är hämtad
+    };
+
+    fetchData();
+  }, [fetchGames]);
 
   const filteredGames = games.filter((game) => game.listName === listId);
+
+  useEffect(() => {
+    console.log("Games:", games);
+    console.log("Filtered games for listId:", listId, filteredGames);
+  }, [games, listId, filteredGames]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href);

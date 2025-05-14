@@ -70,6 +70,8 @@ export const UseGameListStore = create<GameListStore>()(
         try {
           const response = await fetch("/api/games"); //  API-endpoint
           const data = await response.json();
+          console.log("Fetched games:", data); // Kontrollera att data hämtas korrekt
+
           set({ games: data });
         } catch (error) {
           console.error("Failed to fetch games:", error);
