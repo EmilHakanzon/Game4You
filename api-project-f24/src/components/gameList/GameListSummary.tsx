@@ -12,7 +12,7 @@ const GameListSummary = ({ games }: Props) => {
   const totalHours = completed.reduce((sum, g) => sum + (g.timeSpent || 0), 0);
 
   return (
-    <div className="flex ju items-center pr-10 md:text-left md:justify-start md:-ml-16">
+    <div className="flex justify-center items-center  md:text-left md:justify-start md:-ml-16">
       <div className="mb-4 text-sm text-[#3B82F6] pl-20">
         {completed.length > 0 && <p>{completed.length} Completed games</p>}
         {stillPlaying.length > 0 && <p>{stillPlaying.length} Still playing</p>}
