@@ -15,14 +15,17 @@ const SingleGameListPage = ({ listId }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchGamesByList(listId); // Hämta speldata
-      setIsLoading(false); // Stäng av laddning när data är hämtad
+      try {
+        await fetchGamesByList(listId); // Skicka korrekt listId
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchData();
-  }, [listId, fetchGamesByList]);
+  }, [listId]);
 
-  const filteredGames = games.filter((game) => game.listName === listId);
+  const filteredGames = games.filter((game) => game.listName.toLowerCase() === listId);
 
   useEffect(() => {
     console.log("Games:", games);
