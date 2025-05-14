@@ -10,13 +10,22 @@ interface Props {
 
 const SingleGameListPage = ({ listId }: Props) => {
   const { games, fetchGames } = UseGameListStore();
+  const [isLoading, setIsLoading] = useState(true); 
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (games.length === 0) {
-      fetchGames(); // Hämta speldata om det inte redan finns
-    }
-  }, [games, fetchGames]);
+    const fetchData = async () => {
+      try {
+        await fetchGames(); 
+      } catch (error) {
+        console.error("Failed to fetch games:", error);
+      } finally {
+        setIsLoading(false); 
+      }
+    };
+
+    fetchData();
+  }, [fetchGames]);
 
   const filteredGames = games.filter((game) => game.listName === listId);
 
@@ -25,6 +34,17 @@ const SingleGameListPage = ({ listId }: Props) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white mt-4">Loading list...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (filteredGames.length === 0) {
     return (
