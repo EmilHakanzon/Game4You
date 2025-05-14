@@ -34,7 +34,7 @@ export const UseGameListStore = create<GameListStore>()(
       lists: ["My List"],
       addGameToList: (game) =>
         set((state) => ({
-          games: [...state.games, game],
+          games: [...state.games, { ...game, listName: game.listName }],
         })),
       addList: (listName) =>
         set((state) => ({
@@ -69,12 +69,11 @@ export const UseGameListStore = create<GameListStore>()(
       },
       fetchGamesByList: async (listId: string) => {
         try {
-          const response = await fetchGamesByList(listId);
-          const data = await response.json();
-          console.log(`Fetched games for list ${listId}:`, data); // Kontrollera att data hämtas korrekt
-          set({ games: data });
+          const data = await fetchGamesByList(listId); 
+          console.log(`Fetched games for list ${listId}:`, data);
+          set({ games: data }); 
         } catch (error) {
-          console.error("Failed to fetch games:", error);
+          console.error(`Failed to fetch games for list ${listId}:`, error);
         }
       },
     }),
