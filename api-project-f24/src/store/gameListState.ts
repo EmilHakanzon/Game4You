@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { fetchGamesByList } from "@/app/api/lib/fetchGamesByList";
 
 type GameEntry = {
   id: string;
@@ -23,7 +24,7 @@ type GameListStore = {
     totalCompleted: number;
     totalHours: number;
   };
-  fetchGames: () => Promise<void>; // Ny funktion för att hämta speldata
+  fetchGamesByList: (listId: string) => Promise<void>; // Ny funktion för att hämta speldata
 };
 
 export const UseGameListStore = create<GameListStore>()(
@@ -66,7 +67,7 @@ export const UseGameListStore = create<GameListStore>()(
           totalHours,
         };
       },
-      fetchGames: async () => {
+      fetchGamesByList: async (listId: string) => {
         try {
           const response = await fetch("/api/games"); //  API-endpoint
           const data = await response.json();

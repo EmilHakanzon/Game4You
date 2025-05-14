@@ -9,18 +9,18 @@ interface Props {
 }
 
 const SingleGameListPage = ({ listId }: Props) => {
-  const { games, fetchGames } = UseGameListStore();
+  const { games, fetchGamesByList } = UseGameListStore();
   const [isLoading, setIsLoading] = useState(true); // Lokal laddningsindikator
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchGames(); // Hämta speldata
+      await fetchGamesByList(listId); // Hämta speldata
       setIsLoading(false); // Stäng av laddning när data är hämtad
     };
 
     fetchData();
-  }, [fetchGames]);
+  }, [listId, fetchGamesByList]);
 
   const filteredGames = games.filter((game) => game.listName === listId);
 
