@@ -36,8 +36,8 @@ const SingleGameListPage = ({ listId }: Props) => {
 
   return (
     <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-8 space-y-12 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
+      <div className="flex flex-col md:flex-row justify-center items-center md:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center md:text-left text-slate-100">
           {listId}
         </h1>
         <button
