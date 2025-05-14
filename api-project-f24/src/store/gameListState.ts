@@ -69,9 +69,9 @@ export const UseGameListStore = create<GameListStore>()(
       },
       fetchGamesByList: async (listId: string) => {
         try {
-          const data = await fetchGamesByList(listId); // Använd den importerade funktionen
-          console.log(`Fetched games for list ${listId}:`, data); // Kontrollera att data hämtas korrekt
-          set({ games: data }); // Uppdatera Zustand-storen med de hämtade spelen
+          const data = await fetchGamesByList(listId); 
+          console.log(`Fetched games for list ${listId}:`, data);
+          set({ games: data }); 
         } catch (error) {
           console.error(`Failed to fetch games for list ${listId}:`, error);
         }

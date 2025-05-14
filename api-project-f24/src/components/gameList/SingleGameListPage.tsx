@@ -10,15 +10,17 @@ interface Props {
 
 const SingleGameListPage = ({ listId }: Props) => {
   const { games, fetchGamesByList } = UseGameListStore();
-  const [isLoading, setIsLoading] = useState(true); // Lokal laddningsindikator
+  const [isLoading, setIsLoading] = useState(true); 
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetchGamesByList(listId); // Skicka korrekt listId
+        await fetchGamesByList(listId); 
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
