@@ -69,10 +69,9 @@ export const UseGameListStore = create<GameListStore>()(
       },
       fetchGamesByList: async (listId: string) => {
         try {
-          const response = await fetch("/api/games"); //  API-endpoint
+          const response = await fetchGamesByList(listId);
           const data = await response.json();
-          console.log("Fetched games:", data); // Kontrollera att data hämtas korrekt
-
+          console.log(`Fetched games for list ${listId}:`, data); // Kontrollera att data hämtas korrekt
           set({ games: data });
         } catch (error) {
           console.error("Failed to fetch games:", error);
