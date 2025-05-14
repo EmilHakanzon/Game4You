@@ -10,15 +10,14 @@ export default function ListDetailPage() {
   const slug = params?.listId as string;
   const listId = deslugify(slug);
 
-  const [isLoading, setIsLoading] = useState(true); // Lokal hantering av laddningstillstånd
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    // Simulera en laddningstid eller vänta på data
     const timer = setTimeout(() => {
-      setIsLoading(false); // Stäng av laddning efter en viss tid
-    }, 1000); // Justera tiden om det behövs
+      setIsLoading(false); 
+    }, 1000); 
 
-    return () => clearTimeout(timer); // Rensa timeout vid avmontering
+    return () => clearTimeout(timer); 
   }, []);
 
   // Ny LoadingSpinner-komponent
@@ -32,7 +31,7 @@ export default function ListDetailPage() {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-center">
-          <LoadingSpinner /> {/* Använd den nya spinnern */}
+          <LoadingSpinner /> 
           <p className="text-white mt-4">Loading list...</p>
         </div>
       </div>
