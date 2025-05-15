@@ -16,6 +16,23 @@ Game4You is a sleek and powerful game discovery app built with Next.js, Tailwind
 
 - ⚡ Global state powered by Zustand
 
+
+---
+
+# Planned Features✨️🎮
+
+- Expand API endpoints to allow more flexible and detailed game exploration
+
+- Integrate a backend to enable:
+
+- Saving custom game lists
+
+- Sharing lists with others via unique links
+
+- Implement advanced search functionality (e.g. by character, genre, developer, etc.)
+
+- Improve overall user experience and performance
+
 ---
 
 ## 🛠️ Tech Stack
