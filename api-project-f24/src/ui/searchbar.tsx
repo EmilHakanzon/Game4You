@@ -7,8 +7,7 @@ export const SearchBar = () => {
     useSearchComponent();
 
   return (
-    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 w-full relative pl-[200px]">
-      {/* Input */}
+    <div className="flex flex-col sm:flex-row items-center sm:items-end  w-full relative pl-[200px]">
       <div className="flex flex-col w-full max-w-md">
         <div className="flex items-center w-full">
           <input
