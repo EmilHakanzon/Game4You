@@ -8,7 +8,7 @@ export const SearchBar = () => {
 
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-end w-full pl-2 sm:pl-[200px]">
-      <div className="flex flex-col w-full max-w-md">
+      <div className="flex flex-col w-full max-w-xs sm:max-w-md"> 
         <div className="flex items-center w-full">
           <input
             type="text"
@@ -27,7 +27,7 @@ export const SearchBar = () => {
               }
             }}
             placeholder="Search game..."
-            className="p-1 rounded-lg bg-purple-600 text-white w-full text-sm"
+            className="p-1 rounded-lg bg-purple-600 text-white w-full text-xs sm:text-sm" 
           />
           {isSearching === false && input.trim() !== "" && (
             <button
