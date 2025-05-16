@@ -6,11 +6,9 @@ import { useSearchStore } from "../store/searchState";
 import useLoadingStore from "../store/LoadingDelay";
 import LoadingSpinner from "@/ui/loadingSpinner";
 import { GameModal } from "@/components/modal/gamemodal";
-import SearchCard from "@/components/motion/searchCard";
-import { motion } from "framer-motion";
 
 export default function HomePage() {
-  const { results, searchActive, setSelectedGame } = useSearchStore();
+  const {  setSelectedGame } = useSearchStore();
   const [fanFavorites, setFanFavorites] = useState([]);
   const { isLoading, setIsLoading, setIsLoaded } = useLoadingStore();
 
