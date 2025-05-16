@@ -4,7 +4,7 @@ import SearchCard from "@/components/motion/searchCard";
 import { motion } from "framer-motion";
 
 export default function SearchOverlay() {
-  const { searchActive, results, setSelectedGame, clearSearch } =
+  const { searchActive, results, setSelectedGame } =
     useSearchStore();
 
   if (!searchActive || !results) return null;
