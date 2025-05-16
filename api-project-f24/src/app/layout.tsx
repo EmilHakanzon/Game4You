@@ -4,6 +4,8 @@ import NavBar from "@/components/nav/navbar";
 import Footer from "@/components/footer/footer";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
+import { GameModal } from "@/components/modal/gamemodal";
+import SearchOverlay from "@/components/search/SearchOverlay";
 
 export const metadata = {
   title: "Game4You",
@@ -22,9 +24,13 @@ export default function RootLayout({
           <NavBar />
           <Toaster />
 
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow">
+            <SearchOverlay />
+            <GameModal />
+            {children}
+          </main>
           <Footer />
-<Analytics />
+          <Analytics />
         </div>
       </body>
     </html>

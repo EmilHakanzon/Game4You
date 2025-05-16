@@ -6,10 +6,9 @@ import Image from "next/image";
 
 interface MobileMenuProps {
   isOpen: boolean;
-  pathname: string;
 }
 
-export default function MobileMenu({ isOpen, pathname }: MobileMenuProps) {
+export default function MobileMenu({ isOpen }: MobileMenuProps) {
   if (!isOpen) return null;
 
   return (
@@ -19,18 +18,18 @@ export default function MobileMenu({ isOpen, pathname }: MobileMenuProps) {
         <div className="flex items-center space-x-1">
           <DropDown />
           <Image
-            src="avatar.png"
+            src="/avatar.png"
             alt="gamingavatar"
+            width={48}
+            height={48}
             className="object-contain w-12 h-12 rounded-full"
           />
         </div>
 
         {/* Right: SearchBar */}
-        {pathname === "/" && (
           <div className="flex-1">
             <SearchBar />
           </div>
-        )}
       </div>
     </div>
   );

@@ -3,14 +3,12 @@
 import DropDown from "@/ui/dropdown";
 import LogoNav from "@/ui/logoNav";
 import { SearchBar } from "@/ui/searchbar";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi"; 
 import MobileMenu from "@/components/nav/mobileMenu";
 import Image from "next/image";
 
 export default function Navbar() {
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -21,15 +19,17 @@ export default function Navbar() {
 
         {/* SearchBar for Desktop */}
         <div className="hidden md:flex flex-1 justify-center">
-          {pathname === "/" && <SearchBar />}
+           <SearchBar />
         </div>
 
         {/* Dropdown and Avatar for Desktop */}
         <div className="hidden md:flex items-center pr-5">
           <DropDown />
           <Image
-            src="avatar.png"
+            src="/avatar.png"
             alt="gamingavatar"
+            width={48}
+            height={48}
             className="object-contain w-12 h-12"
           />
         </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={isMenuOpen} pathname={pathname} />
+      <MobileMenu isOpen={isMenuOpen} />
     </header>
   );
 }
