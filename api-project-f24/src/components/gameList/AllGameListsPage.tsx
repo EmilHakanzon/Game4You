@@ -1,7 +1,6 @@
 import { UseGameListStore } from "@/store/gameListState";
 import GameListSummary from "@/components/gameList/GameListSummary";
 import GameListItem from "@/ui/GameListItem";
-import Link from "next/link";
 
 const AllGameListsPage = () => {
   const { games } = UseGameListStore();
@@ -23,11 +22,9 @@ const AllGameListsPage = () => {
 
       {Object.entries(groupedByList).map(([listName, listGames]) => (
         <div key={listName}>
-          <Link href={`/list/${listName}`}>
             <h2 className="text-xl sm:text-2xl text-center md:text-left font-semibold mb-4 text-slate-200 hover:underline">
               {listName}
             </h2>
-          </Link>
           <GameListSummary games={listGames} />
           <div className="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {listGames.map((game) => (
