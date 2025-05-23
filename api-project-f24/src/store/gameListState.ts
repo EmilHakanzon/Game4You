@@ -15,6 +15,7 @@ type GameListStore = {
   games: GameEntry[];
   lists: string[];
   addGameToList: (game: GameEntry) => void;
+  deleteList: (listName: string) => void;
   addList: (listName: string) => void;
   updateGameEntry: (id: string, updated: Partial<GameEntry>) => void;
   removeGameFromList: (id: string) => void;
@@ -23,11 +24,11 @@ type GameListStore = {
     totalCompleted: number;
     totalHours: number;
   };
-  fetchGames: () => Promise<void>; // Ny funktion för att hämta speldata
+  fetchGames: () => Promise<void>; 
 };
 
 export const UseGameListStore = create<GameListStore>()(
-  persist(
+  persist<GameListStore>(
     (set, get) => ({
       games: [],
       lists: ["My List"],
@@ -40,6 +41,17 @@ export const UseGameListStore = create<GameListStore>()(
           lists: state.lists.includes(listName)
             ? state.lists
             : [...state.lists, listName],
+        })),
+      deleteList: (listName: string) =>
+        set((state) => ({
+          games:
+            listName === "My List"
+              ? state.games
+              : state.games.filter((game) => game.listName !== listName),
+          lists:
+            listName === "My List"
+              ? state.lists
+              : state.lists.filter((name) => name !== listName),
         })),
       updateGameEntry: (id, updated) =>
         set((state) => ({
@@ -68,7 +80,7 @@ export const UseGameListStore = create<GameListStore>()(
       },
       fetchGames: async () => {
         try {
-          const response = await fetch("/api/games"); //  API-endpoint
+          const response = await fetch("/api/games");
           const data = await response.json();
           set({ games: data });
         } catch (error) {

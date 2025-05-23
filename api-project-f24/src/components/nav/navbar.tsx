@@ -3,23 +3,39 @@
 import DropDown from "@/ui/dropdown";
 import LogoNav from "@/ui/logoNav";
 import { SearchBar } from "@/ui/searchbar";
-import { useState } from "react";
-import { HiMenu, HiX } from "react-icons/hi"; 
+import { useEffect, useRef, useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi";
 import MobileMenu from "@/components/nav/mobileMenu";
 import Image from "next/image";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <header className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20 z-50">
+    <header
+      ref={navRef}
+      className="bg-[#1E293B] px-4 py-2 shadow-md top-0 w-full fixed h-20 z-50"
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <LogoNav />
 
         {/* SearchBar for Desktop */}
         <div className="hidden md:flex flex-1 justify-center">
-           <SearchBar />
+          <SearchBar />
         </div>
 
         {/* Dropdown and Avatar for Desktop */}
